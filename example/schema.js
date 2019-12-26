@@ -18,8 +18,4 @@ client.schema('', fieldSchema, tagSchema, {
     stripUnknown: true,
 });
 
-client.createRetentionPolicy('myTest', '1h')
-    .then(() => console.info('create retention policy success'))
-    .catch(err => console.error(`create retention policy fail, ${err}`));
-
 module.exports = client;
