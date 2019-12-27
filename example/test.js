@@ -41,5 +41,20 @@ describe("#test express app", () => {
                    }
                })
        });
+
+       it('#test get /query', (done) => {
+          request(server)
+              .get('/query')
+              .query({"type":3, "spdy":"fast"})
+              .expect(200, (err, res) => {
+                  if (err) {
+                      console.log(err);
+                      done(err);
+                  } else {
+                      console.log(res.body);
+                      done();
+                  }
+              })
+       });
     });
 });
