@@ -14,7 +14,7 @@ app.post('/create', middlewares, (req, res) => {
         .field(field)
         .then(() => {
             console.info('write point success');
-            res.send('write point success');
+            res.status(200).send({message: 'write point success'});
         })
         .catch(err => {
             console.error(err);
@@ -30,7 +30,7 @@ app.get('/query', (req, res) => {
         .then(result => {
             if (result.results[0].series) {
                 console.log(result.results[0].series[0]);
-                res.json(result.results[0].series[0]);
+                res.status(200).json(result.results[0].series[0]);
             }
         })
         .catch(err => {

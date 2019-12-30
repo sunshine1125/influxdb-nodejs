@@ -1,6 +1,6 @@
-const assert = require('assert');
 const request = require('supertest');
 const app = require('./router');
+const should = require('should');
 
 describe("#test express app", () => {
     let server;
@@ -31,14 +31,14 @@ describe("#test express app", () => {
            request(server)
                .post("/create")
                .send(mockData)
-               .expect(200, (err, res) => {
+               .expect(200)
+               .end((err, res) => {
                    if (err) {
                        console.log(err);
                        done(err);
-                   } else {
-                       // console.log(res.body);
-                       done();
                    }
+                   res.body.message.should.be.equal('write point success');
+                   done();
                })
        });
 
@@ -46,12 +46,13 @@ describe("#test express app", () => {
           request(server)
               .get('/query')
               .query({"type":3, "spdy":"fast"})
-              .expect(200, (err, res) => {
+              .expect(200)
+              .end((err, res) => {
                   if (err) {
                       console.log(err);
                       done(err);
                   } else {
-                      console.log(res.body);
+                      // console.log(res.body);
                       done();
                   }
               })

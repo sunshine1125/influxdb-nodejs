@@ -19,5 +19,8 @@
     "nodemon": "^2.0.2",
     "on-headers": "^1.0.2",
     "supertest": "^4.0.2"
+  },
+  "devDependencies": {
+    "should": "^13.2.3"
   }
 }
